@@ -6,6 +6,10 @@
     "test": "jest",
     "full-test": "./node_modules/.bin/eslint [0-9]*.js && jest"
   },
+  "jest": {
+    "testMatch": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/"]
+  },
   "devDependencies": {
     "@babel/core": "^7.23.6",
     "@babel/node": "^7.22.19",
