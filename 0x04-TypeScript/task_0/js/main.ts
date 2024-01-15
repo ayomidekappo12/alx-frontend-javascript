@@ -6,8 +6,8 @@ interface Student {
 }
 
 const student1: Student = {
-  firstName: "ayomiide",
-  lastName: "kappo",
+  firstName: "Ayomide",
+  lastName: "Kappo",
   age: 21,
   location: "Port-Harcourt",
 };
@@ -21,28 +21,29 @@ const student2: Student = {
 
 const studentsList: Student[] = [student1, student2];
 
+function createTableCell(content: string): HTMLTableCellElement {
+  const cell = document.createElement("td");
+  cell.textContent = content;
+  cell.style.border = "1px solid red";
+  cell.style.padding = "5px";
+  return cell;
+}
+
 const table = document.createElement("table");
-const tbody = document.createElement("tbody");
-
 table.style.background = "white";
-table.appendChild(tbody);
 
+const tbody = document.createElement("tbody");
 studentsList.forEach((student: Student): void => {
   const row = document.createElement("tr");
-  const nameCell = document.createElement("td");
-  const locationCell = document.createElement("td");
 
-  nameCell.textContent = student.firstName;
-  locationCell.textContent = student.location;
-
-  nameCell.style.border = "1px solid red";
-  locationCell.style.border = "1px solid red";
-  nameCell.style.padding = "5px";
-  locationCell.style.padding = "5px";
+  const nameCell = createTableCell(`${student.firstName} ${student.lastName}`);
+  const locationCell = createTableCell(student.location);
 
   row.appendChild(nameCell);
   row.appendChild(locationCell);
+
   tbody.appendChild(row);
 });
 
+table.appendChild(tbody);
 document.body.appendChild(table);
